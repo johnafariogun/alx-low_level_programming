@@ -6,11 +6,11 @@
  */
 int main(void)
 {
-	int n;
+	int number;
 
-	for (n = 0; n < 10; n++)
+	for (number = 48; number <= 57; number++)
 	{
-		putchar(n);
+		putchar(number);
 	}
 	putchar('\n');
 
