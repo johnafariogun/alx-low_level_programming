@@ -1,17 +1,14 @@
+#include "main.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 /**
- * main - Entry point
- *
+ * positive_or_negative - Entry point
+ *@i: integer to be checked
  * Return: Always 0 (Success)
  */
-int main(void)
+void positive_or_negative(int i)
 {
-	int n;
+	int n = i;
 
-	srand(time(0));
-	n = rand() - RAND_MAX / 2;
 	/* your code goes there */
 	if (n < 0)
 	{
@@ -25,6 +22,4 @@ int main(void)
 	{
 		printf("%d is zero\n", n);
 	}
-
-	return (0);
 }
