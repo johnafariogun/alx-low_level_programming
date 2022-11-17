@@ -5,14 +5,14 @@
  */
 int main(void)
 {
-	int i;
 	unsigned long f1 = 0, f2 = 1, sum;
 	double final_sum;
 
-	for (i = 0; i<= 4000000; i++)
+	while (1)
 	{
 		sum = f1 + f2;
-		
+		if (sum > 4000000)
+			break;
 		if ((sum % 2) == 0)
 			final_sum += sum;
 
