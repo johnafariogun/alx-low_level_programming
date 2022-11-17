@@ -6,6 +6,7 @@
 int main(void)
 {
 	unsigned int sum = 0, num = 3;
+
 	while (num <= 1024)
 	{
 		if (num % 3 == 0 || num % 5 == 0)
