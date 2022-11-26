@@ -29,17 +29,17 @@ void print_int(va_list arg)
  */
 void print_float(va_list arg)
 {
-	double num;
-	
+	float num;
+
 	num = va_arg(arg, double);
-	printf("%lf", num);
+	printf("%f", num);
 }
 
 /**
  * print_str - prints a string
  * @arg: variadic arguments
  */
-void print_Str(va_list arg)
+void print_str(va_list arg)
 {
 	char *str;
 
@@ -55,13 +55,38 @@ void print_Str(va_list arg)
 
 /**
  * print_all - prints anything in certain formats, followed by a new line
- * @format - a string of characters repping arhument types and
+ * @format: a string of characters repping arhument types and
  * function to be used
  * @...: variable number of arguments(total variadic arguments)
  */
 void print_all(const char * const format, ...)
 {
 	va_list arg;
-	int i 
+	int i = 0, j = 0;
+	char *str = "";
+	format_t form[] = {
+		{"s", print_str},
+		{"i", print_int},
+		{"f", print_float},
+		{"c", print_char}
+	};
 
+	va_start(arg, format);
+	while (format && format[i])
+	{
+		while (j < 4)
+		{
+			if (format[i] == *(form[j].specifier))
+			{
+				printf("%s", str);
+				form[j].func(arg);
+				str = ", ";
+				break;
+			}
+			j++;
+		}
+		j = 0, i++;
+	}
+	printf("\n");
+	va_end(arg);
 }
