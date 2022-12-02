@@ -23,7 +23,12 @@ int create_file(const char *filename, char *text_content)
 		;
 
 	result = write(f, text_content, i);
-	close(f);
+	if (result == -1)/* if the file wasn't written into successfully*/
+		return (-1);
+	result = close(f);
 
-	return (result);
+	if (result == -1)/*if the file wasn't closed successfully*/
+		return (-1);
+
+	return (1);
 }
