@@ -1,6 +1,6 @@
 #include "lists.h"
 /**
- * free_dnodeint - frees the dlistint_t list
+ * free_dlistint - frees the dlistint_t list
  *
  * @head: pointer to the head of the doubly linked list
  **/
