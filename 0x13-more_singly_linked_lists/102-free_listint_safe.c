@@ -6,28 +6,28 @@
  */
 size_t free_listint_safe(listint_t **head)
 {
-	int i, j;
+	size_t i = 0;
 	listint_t *temp;
 
-	for (i = j = 0; *head != NULL || j; i++)
+	if (head == NULL || !*head)
+		return (0);
+
+	while (*head)
 	{
 		if (*head <= (*head)->next)
 		{
-			j = 1;
+			temp = (*head)->next;
+			free(*head);
+			*head = temp;
+			i++;
+		}
+		else
+		{
+			free(*head);
+			*head = NULL;
+			i++;
 			break;
 		}
-
-		temp = (*head)->next;
-		free(*head);
-		*head = temp;
-		j = 0;
-	}
-
-	if (j)
-	{
-		temp  = (*head)->next;
-		free(*head);
-		i++;
 	}
 
 	*head = NULL;
